@@ -1,0 +1,17 @@
+# every change here requires `prisma generate/prisma deploy` 
+# post-deployment hook in prisma.yml mitigates this
+type Link {
+  id: ID! @unique
+  createdAt: DateTime!
+  description: String!
+  url: String!
+  postedBy: User #relation field
+}
+
+type User {
+  id: ID! @unique
+  name: String!
+  email: String! @unique
+  password: String! 
+  links: [Link!]!
+}
